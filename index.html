@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>J.A.R.V.I.S - Web Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="jarvis-container">
+    <!-- HUD Overlay -->
+    <div class="hud-overlay">
+      <div class="corner top-left"></div>
+      <div class="corner top-right"></div>
+      <div class="corner bottom-left"></div>
+      <div class="corner bottom-right"></div>
+      <div class="scan-line"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <i class="fa-solid fa-atom"></i>
+        <span>J.A.R.V.I.S</span>
+      </div>
+      <div class="status-bar">
+        <div class="status-item">
+          <span class="status-dot" id="micStatus"></span>
+          <span>MIC</span>
+        </div>
+        <div class="status-item">
+          <span class="status-dot" id="netStatus"></span>
+          <span>ONLINE</span>
+        </div>
+        <div class="status-item" id="timeDisplay">00:00:00</div>
+      </div>
+    </header>
+
+    <!-- Main Display -->
+    <main class="main-display">
+      <!-- Visual Core -->
+      <div class="core">
+        <div class="core-ring ring1"></div>
+        <div class="core-ring ring2"></div>
+        <div class="core-ring ring3"></div>
+        <div class="core-center" id="coreCenter">
+          <i class="fa-solid fa-microphone-slash" id="micIcon"></i>
+        </div>
+        <div class="waveform" id="waveform">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Visual Screen -->
+      <div class="visual-screen" id="visualScreen">
+        <div class="screen-content" id="screenContent">
+          <div class="welcome-msg">
+            <h2>Good day, Sir.</h2>
+            <p>Just Another Rather Very Intelligent System</p>
+            <p class="hint">Click the core or say "Hey Jarvis" to begin</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Log -->
+      <div class="chat-log" id="chatLog"></div>
+    </main>
+
+    <!-- Controls -->
+    <footer class="controls">
+      <button class="control-btn" id="voiceBtn" title="Toggle Voice">
+        <i class="fa-solid fa-microphone"></i>
+      </button>
+      <div class="text-input">
+        <input type="text" id="textInput" placeholder="Type command or ask anything...">
+        <button id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+      <button class="control-btn" id="clearBtn" title="Clear Screen">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </footer>
+  </div>
+
+  <script src="jarvis.js"></script>
+</body>
+</html>
