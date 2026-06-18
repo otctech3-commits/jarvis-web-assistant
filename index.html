@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>J.A.R.V.I.S - Web Assistant</title>
+  <title>J.A.R.V.I.S - AI Assistant</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
@@ -22,6 +22,7 @@
       <div class="logo">
         <i class="fa-solid fa-atom"></i>
         <span>J.A.R.V.I.S</span>
+        <span class="version">v2.0 AI</span>
       </div>
       <div class="status-bar">
         <div class="status-item">
@@ -29,8 +30,12 @@
           <span>MIC</span>
         </div>
         <div class="status-item">
+          <span class="status-dot" id="aiStatus"></span>
+          <span>AI</span>
+        </div>
+        <div class="status-item">
           <span class="status-dot" id="netStatus"></span>
-          <span>ONLINE</span>
+          <span>NET</span>
         </div>
         <div class="status-item" id="timeDisplay">00:00:00</div>
       </div>
@@ -45,16 +50,17 @@
           <i class="fa-solid fa-microphone-slash" id="micIcon"></i>
         </div>
         <div class="waveform" id="waveform">
-          <span></span><span></span><span></span><span></span>
+          <span></span><span></span>
         </div>
       </div>
 
       <div class="visual-screen" id="visualScreen">
         <div class="screen-content" id="screenContent">
           <div class="welcome-msg">
-            <h2>Systems Online, Sir.</h2>
-            <p>Just Another Rather Very Intelligent System</p>
-            <p class="hint">Click core or say "Hey Jarvis" • Web search enabled</p>
+            <h2>AI Core Online, Sir.</h2>
+            <p>Advanced Intelligence + Web Search Enabled</p>
+            <p class="hint">Click ⚙️ to add API key for full AI mode</p>
+            <p class="hint">Or say "Hey Jarvis" to begin</p>
           </div>
         </div>
       </div>
@@ -63,17 +69,52 @@
     </main>
 
     <footer class="controls">
+      <button class="control-btn" id="settingsBtn" title="AI Settings">
+        <i class="fa-solid fa-gear"></i>
+      </button>
       <button class="control-btn" id="voiceBtn" title="Toggle Voice">
         <i class="fa-solid fa-volume-high"></i>
       </button>
       <div class="text-input">
-        <input type="text" id="textInput" placeholder="Type command or 'search for...' ">
+        <input type="text" id="textInput" placeholder="Ask me anything... I search web + think">
         <button id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
       <button class="control-btn" id="clearBtn" title="Clear">
         <i class="fa-solid fa-trash"></i>
       </button>
     </footer>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal" id="settingsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-brain"></i> AI Configuration</h3>
+        <button class="close-btn" id="closeSettings"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert">
+          ⚠️ <strong>API Key Required for AI Mode</strong><br>
+          Get free key from <a href="https://console.groq.com/keys" target="_blank">Groq</a> or use OpenAI. Key stored locally only.
+        </div>
+        <div class="form-group">
+          <label>AI Provider</label>
+          <select id="aiProvider">
+            <option value="groq">Groq - Free, Fast Llama 3.1</option>
+            <option value="openai">OpenAI - GPT-4o Mini</option>
+            <option value="none">Disabled - Search Only Mode</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>API Key</label>
+          <input type="password" id="apiKey" placeholder="sk-... or gsk_...">
+          <small>Never shared. Stored in your browser only.</small>
+        </div>
+        <button class="btn-primary" id="saveSettings">Save & Activate AI</button>
+        <div class="divider">OR</div>
+        <button class="btn-secondary" id="demoMode">Continue Without AI - Search Only</button>
+      </div>
+    </div>
   </div>
 
   <script src="jarvis.js"></script>
